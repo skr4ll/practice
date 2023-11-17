@@ -17,7 +17,7 @@ int main(){
 			clear();				//Am Anfang das Fenster leeren, ansonsten werden Eingaben aneinander gereiht
 			refresh();
 			attron(COLOR_PAIR(1));
-			printw("Key pressed: %c", test);	//Eingabe auf Bildschirm wiedergeben
+			printw("The Key pressed is: the %c character", test);	//Eingabe auf Bildschirm wiedergeben
 			refresh();
 			attroff(COLOR_PAIR(1));				
 		}
