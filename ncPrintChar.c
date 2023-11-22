@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <ncurses.h>
-int selectColour(char c);
+int changeColour(char c);
 
 int main(){
 	char test = 'a';
@@ -20,6 +20,14 @@ int main(){
 	init_pair(4, COLOR_WHITE, COLOR_BLACK);
 	init_pair(5, COLOR_CYAN, COLOR_BLACK);
 
+	enum Colour {
+		RED,
+		GREEN,
+		YELLOW,
+		WHITE,
+		CYAN
+	};
+
 	while(true){
 		if(test == 'q'){	//Ist die Eingabe q, beenden wir das Programm
 			endwin();
@@ -29,31 +37,40 @@ int main(){
 			clear();				//Am Anfang das Fenster leeren, ansonsten werden Eingaben aneinander gereiht
 			refresh();
 			
-			attron(COLOR_PAIR(selectColour(test)));
-			printw("Current Pair NR: %d The Key pressed is: the %c character",selectColour(test), test);	//Eingabe auf Bildschirm wiedergeben
+			attron(COLOR_PAIR(changeColour(test)));
+			printw("Current Pair NR: %d The Key pressed is: the %c character",changeColour(test), test);	//Eingabe auf Bildschirm wiedergeben
 			refresh();
-			attroff(COLOR_PAIR(selectColour(test)));				
+			attroff(COLOR_PAIR(changeColour(test)));				
 		}
 	}
 }
-int selectColour(char c){
-	int selectedPair = 1;
+int changeColour(char c){
+	enum Colour {
+		RED,
+		GREEN,
+		YELLOW,
+		WHITE,
+		CYAN
+	};
+
+	enum Colour selectedPair = RED;
+	
 	switch (c) {
 		case 'a':
 		case 's':
 		case 'd':
-		return selectedPair = 2;
+		return selectedPair = GREEN;
 
 		case 'y':
 		case 'x':
 		case 'c':
-		return selectedPair = 3;
+		return selectedPair = YELLOW;
 
 		case 'w':
 		case 'e':
 		case 'r':
 		case 't':
-		return selectedPair = 4;
+		return selectedPair = CYAN;
 		
 		case 'f':
 		case 'g':
