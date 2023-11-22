@@ -20,14 +20,6 @@ int main(){
 	init_pair(4, COLOR_WHITE, COLOR_BLACK);
 	init_pair(5, COLOR_CYAN, COLOR_BLACK);
 
-	enum Colour {
-		RED,
-		GREEN,
-		YELLOW,
-		WHITE,
-		CYAN
-	};
-
 	while(true){
 		if(test == 'q'){	//Ist die Eingabe q, beenden wir das Programm
 			endwin();
@@ -46,11 +38,11 @@ int main(){
 }
 int changeColour(char c){
 	enum Colour {
-		RED,
-		GREEN,
-		YELLOW,
-		WHITE,
-		CYAN
+		RED = 1,
+		GREEN = 2,
+		YELLOW = 3,
+		WHITE = 4,
+		CYAN = 5
 	};
 
 	enum Colour selectedPair = RED;
