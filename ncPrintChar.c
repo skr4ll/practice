@@ -1,3 +1,7 @@
+/* Program to practice and try out Ncurses functions
+ * currently it switches the colour of the text depending on what key is pressed
+**/
+
 #include <stdio.h>
 #include <ncurses.h>
 int selectColour(char c);
