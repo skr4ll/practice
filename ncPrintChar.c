@@ -70,13 +70,13 @@ int changeColour(char c){
 		case 'e':
 		case 'r':
 		case 't':
-		return selectedPair = CYAN;
+		return selectedPair = WHITE;
 		
 		case 'f':
 		case 'g':
 		case 'h':
 		case 'j':
-		return selectedPair = 5;
+		return selectedPair = CYAN;
 
 		default:
 		return selectedPair;
