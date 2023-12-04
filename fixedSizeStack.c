@@ -14,13 +14,13 @@ void peek(Stack* sta);
 char pop(Stack* sta){
 	char topItem;  
 	if(sta->top != 0){
-		topItem = sta->items[sta->top];
+		topItem = sta->items[sta->top - 1];
+		sta->items[sta->top - 1] = ' ';
 		sta->top--;
 	}
 	else{
 		topItem = sta->items[sta->top];
 		sta->items[sta->top] = ' ';
-		sta->top--;
 	}
 	return topItem;
 }
@@ -31,7 +31,7 @@ void push(Stack* sta, char item){
 		sta->top++;
 	}
 	else if(sta->stackSize >= sta->top + 1){
-		sta->items[sta->top + 1] = item;
+		sta->items[sta->top] = item;
 		sta->top++;
 	}
 	else{
@@ -51,36 +51,27 @@ int main(){
 	testStack.top = 0;
 	Stack* ptrToStack = &testStack;
 	char currentTop;
-	
 	char item = 'a';
-	printf("ADDED %c at stacktop of %i\n", item, testStack.top);
-	push(ptrToStack, item);
-	printf("New Stacktop is: %i\n\n", testStack.top);
-	
-	item = 'b';
-	printf("ADDED %c at stacktop of %i\n", item, testStack.top);
-	push(ptrToStack, item);
-	printf("New Stacktop is: %i\n\n", testStack.top);
-	
-	item = 'c';
-	printf("ADDED %c at stacktop of %i\n", item, testStack.top);
-	push(ptrToStack, item);
-	printf("New Stacktop is: %i\n\n", testStack.top);
-	
-	item = 'd';
-	printf("ADDED %c at stacktop of %i\n", item, testStack.top);
-	push(ptrToStack, item);
-	printf("New Stacktop is: %i\n\n", testStack.top);
-	
+
+	for(int i = 0; i <= testStack.stackSize; i++){
+		printf("TRYING TO ADD --- %c --- at stacktop of %i\n", item, testStack.top);
+		push(ptrToStack, item);
+		if(ptrToStack->items[i] == item){
+			printf("ITEM %c HAS BEEN ADDED\n", item);
+		}
+		printf("New Stacktop is: %i\n\n", testStack.top);
+		item++;
+	}
+
 	currentTop = pop(ptrToStack);
 	printf("Top item was: %c and is now poped\n", currentTop);
 	printf("New Stacktop is: %i\n\n", testStack.top);
-	
+
 	item = 'z';
 	printf("ADDED %c at stacktop of %i\n", item, testStack.top);
 	push(ptrToStack, item);
 	printf("New Stacktop is: %i\n\n", testStack.top);
-	
+
 	currentTop = pop(ptrToStack);
 	printf("Top item was: %c and is now poped\n", currentTop);
 	printf("New Stacktop is: %i\n\n", testStack.top);
