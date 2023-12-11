@@ -14,8 +14,8 @@ void peek(Stack* sta);
 char pop(Stack* sta){
 	char topItem;  
 	if(sta->top != 0){
-		topItem = sta->items[sta->top - 1];
-		sta->items[sta->top - 1] = ' ';
+		topItem = sta->items[sta->top];
+		sta->items[sta->top] = ' ';
 		sta->top--;
 	}
 	else{
@@ -26,16 +26,18 @@ char pop(Stack* sta){
 }
 
 void push(Stack* sta, char item){
+
 	if(sta->top == 0){
 		sta->items[0] = item;
 		sta->top++;
 	}
 	else if(sta->stackSize >= sta->top + 1){
-		sta->items[sta->top] = item;
 		sta->top++;
+		sta->items[sta->top] = item;
 	}
 	else{
-		printf("STACK FULL\n");
+		printf("STACK FULLL\n");
+		printf("ITEM %c NOT ADDED\n", item);
 		return;
 	}
 }
@@ -54,27 +56,26 @@ int main(){
 	char item = 'a';
 
 	for(int i = 0; i <= testStack.stackSize; i++){
-		printf("TRYING TO ADD --- %c --- at stacktop of %i\n", item, testStack.top);
+		printf("TRYING TO PUSH --- %c --- TO STACK\n", item);
 		push(ptrToStack, item);
-		if(ptrToStack->items[i] == item){
+		if(ptrToStack->items[i] == item || ptrToStack->items[ptrToStack->top] == item){
 			printf("ITEM %c HAS BEEN ADDED\n", item);
 		}
-		printf("New Stacktop is: %i\n\n", testStack.top);
+		printf("The top index is now: %i\n\n", testStack.top);
 		item++;
 	}
-
 	currentTop = pop(ptrToStack);
-	printf("Top item was: %c and is now poped\n", currentTop);
-	printf("New Stacktop is: %i\n\n", testStack.top);
+	printf("Top item was: %c and is now popped\n", currentTop);
+	printf("The top index is now: %i\n\n", testStack.top);
 
 	item = 'z';
-	printf("ADDED %c at stacktop of %i\n", item, testStack.top);
+	printf("ADDED %c AT STACKTOP OF %i\n", item, testStack.top);
 	push(ptrToStack, item);
-	printf("New Stacktop is: %i\n\n", testStack.top);
+	printf("The top index is now: %i\n\n", testStack.top);
 
 	currentTop = pop(ptrToStack);
-	printf("Top item was: %c and is now poped\n", currentTop);
-	printf("New Stacktop is: %i\n\n", testStack.top);
+	printf("Top item was: %c and is now popped\n", currentTop);
+	printf("The top index is now: %i\n\n", testStack.top);
 
 	peek(ptrToStack);
 	return 0;
