@@ -1,9 +1,10 @@
 #include <ncurses.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 char* createArray(int arraySize);
-void printArray(char* array, int arraySize);
+void printArray(char* array, size_t arraySize);
 
 int main(){
 	initscr();
@@ -41,7 +42,7 @@ char* createArray(int arraySize){
 	return createdArray;
 }
 
-void printArray(char* array, int arraySize){
+void printArray(char* array, size_t arraySize){
 	printw("\n\n\n");
 	for (int i = 0; i < arraySize ; i++) {
 		printw("\tValue of array[%d] = %c\n", i, array[i]);
